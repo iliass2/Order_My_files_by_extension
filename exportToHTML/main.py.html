@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">os</span>
+
+
+<span class="s0">def </span><span class="s1">get_files_with_ext(ext):</span>
+    <span class="s1">docu=[]</span>
+    <span class="s0">for </span><span class="s1">fichero </span><span class="s0">in </span><span class="s1">contenido:</span>
+        <span class="s0">if </span><span class="s1">os.path.isfile(os.path.join(desk</span><span class="s0">, </span><span class="s1">fichero)) </span><span class="s0">and </span><span class="s1">fichero.endswith(ext):</span>
+            <span class="s1">docu.append(fichero)</span>
+    <span class="s0">return </span><span class="s1">docu</span>
+<span class="s0">def </span><span class="s1">create_directs(desk):</span>
+  <span class="s2">#  desk = &quot;C:\\Users\\ilias\\Downloads&quot;</span>
+    <span class="s1">dirs=[]</span>
+    <span class="s0">for </span><span class="s1">archivo </span><span class="s0">in </span><span class="s1">contenido:</span>
+        <span class="s1">nombre</span><span class="s0">, </span><span class="s1">extension = os.path.splitext(archivo)</span>
+        <span class="s1">dd=extension[</span><span class="s3">1</span><span class="s1">:]</span>
+        <span class="s1">dirs.append(dd)</span>
+    <span class="s0">for </span><span class="s1">dir_3 </span><span class="s0">in </span><span class="s1">dirs:</span>
+        <span class="s0">if </span><span class="s1">((os.path.exists(desk+</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">&quot;</span><span class="s1">+dir_3)) == bool(</span><span class="s0">False</span><span class="s1">)):</span>
+           <span class="s1">os.mkdir(desk+</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">&quot;</span><span class="s1">+dir_3)</span>
+
+<span class="s1">desk=</span><span class="s4">&quot;C:</span><span class="s0">\\</span><span class="s4">Users</span><span class="s0">\\</span><span class="s4">ilias</span><span class="s0">\\</span><span class="s4">OneDrive</span><span class="s0">\\</span><span class="s4">Imágenes&quot; </span><span class="s2"># here change your directory</span>
+<span class="s1">desk=input(</span><span class="s4">&quot;give me the directory&quot;</span><span class="s1">)</span>
+<span class="s1">contenido=os.listdir(desk)</span>
+<span class="s1">extensiones=[]</span>
+<span class="s1">create_directs(desk)</span>
+
+<span class="s1">print(contenido)</span>
+
+<span class="s0">for </span><span class="s1">archivo </span><span class="s0">in </span><span class="s1">contenido:</span>
+    <span class="s1">nombre</span><span class="s0">, </span><span class="s1">extension = os.path.splitext(archivo)</span>
+    <span class="s1">print(get_files_with_ext(extension))</span>
+    <span class="s1">extensiones.append(extension)</span>
+
+<span class="s0">for </span><span class="s1">ll </span><span class="s0">in </span><span class="s1">extensiones:</span>
+    <span class="s1">files_to_copy=get_files_with_ext(ll)</span>
+    <span class="s0">for </span><span class="s1">cut </span><span class="s0">in </span><span class="s1">files_to_copy:</span>
+        <span class="s1">os.rename(desk + </span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">&quot; </span><span class="s1">+ cut</span><span class="s0">, </span><span class="s1">desk + </span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">&quot; </span><span class="s1">+ll[</span><span class="s3">1</span><span class="s1">:]+</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">&quot;</span><span class="s1">+cut)</span>
+
+<span class="s1">print(extensiones)</span>
+<span class="s1">create_directs(desk)</span></pre>
+</body>
+</html>
